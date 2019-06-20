@@ -1,0 +1,2 @@
+book.author=xiaomage
+book.name=spring boot
