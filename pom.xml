@@ -3,33 +3,77 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.zy</groupId>
   <artifactId>learnjava</artifactId>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>springframe</module>
-    </modules>
-    <packaging>pom</packaging>
 
-  <properties>
+  <name>learnjava Maven Webapp</name>
+  <url>http://maven.apache.org</url>
 
-  </properties>
-
-    <profiles>
-        <profile>
-            <id>dev-default</id>
-            <modules>
-                <module>corejava</module>
-            </modules>
-        </profile>
-    </profiles>
-
-  <dependencyManagement>
-    <dependencies>
-      <!--<dependency>
-        <groupId></groupId>
-        <artifactId></artifactId>
-      </dependency>-->
+  <modules>
+    <module>corejava</module>
+  </modules>
 
 
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <excludes>
+          <exclude>conf/**</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <finalName>learnjava</finalName>
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>me.richard</groupId>-->
+<!--        <artifactId>maven-plugin-suffix</artifactId>-->
+<!--        <version>1.0-SNAPSHOT</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>suffix</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--        <configuration>-->
+<!--          <baseDir>${project.basedir}</baseDir>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+  </build>
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <profile.active>dev</profile.active>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>test</id>
+      <properties>
+        <profile.active>test</profile.active>
+      </properties>
+    </profile>
+    <profile>
+      <id>test</id>
+      <properties>
+        <profile.active>test</profile.active>
+      </properties>
+    </profile>
+  </profiles>
 </project>
